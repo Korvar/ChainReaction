@@ -102,6 +102,11 @@ class ApplicationMain {
             return Assets.getSound ("Beep");
          
 		
+		if (inName=="assets/bomb.png")
+			 
+            return Assets.getBitmapData ("assets/bomb.png");
+         
+		
 		if (inName=="assets/data/autotiles.png")
 			 
             return Assets.getBitmapData ("assets/data/autotiles.png");
@@ -322,6 +327,11 @@ class ApplicationMain {
 			 return Assets.getText ("assets/HaxeFlixel.svg");
          
 		
+		if (inName=="assets/source/bomb.xcf")
+			 
+            return Assets.getBytes ("assets/source/bomb.xcf");
+         
+		
 		
 		return null;
 		
@@ -342,6 +352,7 @@ class ApplicationMain {
 }
 
 class NME_assets_data_beep_mp3 extends nme.media.Sound { }
+class NME_assets_bomb_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_autotiles_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_autotiles_alt_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_base_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
@@ -386,6 +397,7 @@ class NME_assets_fonts_read_this_______really_read_it_pdf extends nme.utils.Byte
 class NME_assets_fonts_read_this_first_html extends nme.utils.ByteArray { }
 class NME_assets_fonts_westminster_ttf extends nme.text.Font { }
 class NME_assets_haxeflixel_svg extends nme.utils.ByteArray { }
+class NME_assets_source_bomb_xcf extends nme.utils.ByteArray { }
 
 
 #else

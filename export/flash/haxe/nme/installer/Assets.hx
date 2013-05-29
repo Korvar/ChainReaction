@@ -43,6 +43,8 @@ class Assets {
 			
 			resourceClasses.set ("Beep", NME_assets_data_beep_mp3);
 			resourceTypes.set ("Beep", "sound");
+			resourceClasses.set ("assets/bomb.png", NME_assets_bomb_png);
+			resourceTypes.set ("assets/bomb.png", "image");
 			resourceClasses.set ("assets/data/autotiles.png", NME_assets_data_autotiles_png);
 			resourceTypes.set ("assets/data/autotiles.png", "image");
 			resourceClasses.set ("assets/data/autotiles_alt.png", NME_assets_data_autotiles_alt_png);
@@ -131,6 +133,8 @@ class Assets {
 			resourceTypes.set ("assets/fonts/westminster.ttf", "font");
 			resourceClasses.set ("assets/HaxeFlixel.svg", NME_assets_haxeflixel_svg);
 			resourceTypes.set ("assets/HaxeFlixel.svg", "text");
+			resourceClasses.set ("assets/source/bomb.xcf", NME_assets_source_bomb_xcf);
+			resourceTypes.set ("assets/source/bomb.xcf", "binary");
 			
 			
 			initialized = true;

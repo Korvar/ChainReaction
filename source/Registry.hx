@@ -22,7 +22,7 @@ class Registry
 	public static var worldMinX:Float = 0;
 	public static var worldMaxX:Float = 1280;
 	public static var worldMinY:Float = 0;
-	public static var worldMaxY:Float = 725;
+	public static var worldMaxY:Float = 800;
 
 
 	// CBtypes, should probably rename

@@ -1,5 +1,6 @@
 package ;
 
+import nape.phys.Material;
 import org.flixel.FlxG;
 import org.flixel.FlxGroup;
 import org.flixel.nape.FlxPhysSprite;
@@ -23,22 +24,38 @@ class PlayState extends FlxPhysState
 	
 	override public function create():Void
 	{
+		
+		// define the extents of space
+		FlxG.camera.setBounds(Registry.worldMinX, Registry.worldMinY, (Registry.worldMaxX - Registry.worldMinX), (Registry.worldMaxY - Registry.worldMinY), true);
+		
 		super.create();
+		
+		// disablePhysDebug();
 
+		bombs = new FlxGroup();
+		rocks = new FlxGroup();
+		hud = new FlxGroup();
+		
 		
 		// FlxPhysState shortcut to create bondaries around game area. 
-		createWalls(Registry.worldMinX, Registry.worldMinY, Registry.worldMaxX, Registry.worldMaxY);
+		createWalls(Registry.worldMinX, Registry.worldMinY, Registry.worldMaxX, Registry.worldMaxY, 10, new Material(1, 0, 0, 1, 0));
 		
 		FlxPhysState.space.gravity.setxy(0,0);  // No Gravity		
 		
-		// define the extents of space
-		FlxG.camera.setBounds(Registry.worldMinX, Registry.worldMinY, Registry.worldMaxX, Registry.worldMaxY, true);
+
 		
 		// Create a bunch of bombs
+		for (i in 0...10)
+		{
+			var bombX:Float = 20 + (FlxG.random() * (Registry.worldMaxX - Registry.worldMinX - 40));
+			var bombY:Float = 20 + (FlxG.random() * (Registry.worldMaxY - Registry.worldMinY - 40));
+			var newBomb:Bomb = new Bomb(bombX, bombY);
+			bombs.add(newBomb);
+		}
+		add(bombs);
 		
 		// Possibly create some rocks
-		var foo:FlxPhysSprite = new FlxPhysSprite(100, 100);
-		add(foo);
+
 		
 	}
 	
