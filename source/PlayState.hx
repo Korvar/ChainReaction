@@ -1,6 +1,7 @@
 package ;
 
 import nape.phys.Material;
+import org.flixel.FlxEmitter;
 import org.flixel.FlxG;
 import org.flixel.FlxGroup;
 import org.flixel.nape.FlxPhysSprite;
@@ -45,7 +46,7 @@ class PlayState extends FlxPhysState
 
 		
 		// Create a bunch of bombs
-		for (i in 0...10)
+		for (i in 0...30)
 		{
 			var bombX:Float = 20 + (FlxG.random() * (Registry.worldMaxX - Registry.worldMinX - 40));
 			var bombY:Float = 20 + (FlxG.random() * (Registry.worldMaxY - Registry.worldMinY - 40));
@@ -53,6 +54,25 @@ class PlayState extends FlxPhysState
 			bombs.add(newBomb);
 		}
 		add(bombs);
+		
+		var testEmitter:PhysEmitter = new PhysEmitter(100, 100);
+		testEmitter.minSpeed = 300;
+		testEmitter.maxSpeed = 300;
+		
+		for (i in 0...50)
+		{
+			var newParticle:PhysParticle = new PhysParticle();
+
+			
+			newParticle.makeGraphic(1, 1);
+			//newParticle.createCircularBody(1);
+			newParticle.exists =  false;
+			newParticle.setBodyMaterial(1, 0, 0, 100, 0);
+			testEmitter.add(newParticle);
+		}
+		
+		add(testEmitter);
+		testEmitter.start(true, 3, 0.1);
 		
 		// Possibly create some rocks
 
