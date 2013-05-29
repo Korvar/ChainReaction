@@ -58,6 +58,8 @@ class PlayState extends FlxPhysState
 		var testEmitter:PhysEmitter = new PhysEmitter(100, 100);
 		testEmitter.minSpeed = 300;
 		testEmitter.maxSpeed = 300;
+		//testEmitter.minAngle = 30;
+		//testEmitter.maxAngle = 60;
 		
 		for (i in 0...50)
 		{

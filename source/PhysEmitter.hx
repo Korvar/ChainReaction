@@ -45,7 +45,7 @@ class PhysEmitter extends FlxGroup
 		
 		var emitSpeed:Float = (FlxG.random() * (maxSpeed - minSpeed)) + minSpeed;
 		var emitAngle:Float = (FlxG.random() * (maxAngle - minAngle)) + minAngle;
-		
+		emitAngle = Math.PI * emitAngle / 180;  // Convert to radians
 
 		emitVelocity.muleq(emitSpeed);
 		emitVelocity.rotate(emitAngle);
