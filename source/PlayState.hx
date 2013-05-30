@@ -55,26 +55,10 @@ class PlayState extends FlxPhysState
 		}
 		add(bombs);
 		
-		var testEmitter:PhysEmitter = new PhysEmitter(100, 100);
-		testEmitter.minSpeed = 300;
-		testEmitter.maxSpeed = 300;
-		//testEmitter.minAngle = 30;
-		//testEmitter.maxAngle = 60;
-		
-		for (i in 0...50)
-		{
-			var newParticle:PhysParticle = new PhysParticle();
-
-			
-			newParticle.makeGraphic(1, 1);
-			//newParticle.createCircularBody(1);
-			newParticle.exists =  false;
-			newParticle.setBodyMaterial(1, 0, 0, 100, 0);
-			testEmitter.add(newParticle);
-		}
+		var testEmitter:Explosion = new Explosion(100, 100);
 		
 		add(testEmitter);
-		testEmitter.start(true, 3, 0.1);
+		testEmitter.explode();
 		
 		// Possibly create some rocks
 

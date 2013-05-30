@@ -64,7 +64,7 @@ class PhysEmitter extends FlxGroup
 		maxAngle = Angle + (Spread / 2);
 	}
 	
-	public function start(Explode:Bool, Lifespan:Float, Rate:Float):Void
+	public function start(Explode:Bool = true, Lifespan:Float = 1, Rate:Float = 1):Void
 	{
 
 		lifespan = Lifespan;		
