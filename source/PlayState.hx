@@ -31,7 +31,7 @@ class PlayState extends FlxPhysState
 		
 		super.create();
 		
-		// disablePhysDebug();
+		disablePhysDebug();
 
 		bombs = new FlxGroup();
 		rocks = new FlxGroup();
@@ -50,15 +50,10 @@ class PlayState extends FlxPhysState
 		{
 			var bombX:Float = 20 + (FlxG.random() * (Registry.worldMaxX - Registry.worldMinX - 40));
 			var bombY:Float = 20 + (FlxG.random() * (Registry.worldMaxY - Registry.worldMinY - 40));
-			var newBomb:Bomb = new Bomb(bombX, bombY);
+			var newBomb:Bomb = new Bomb(bombX, bombY, 0);
 			bombs.add(newBomb);
 		}
 		add(bombs);
-		
-		var testEmitter:Explosion = new Explosion(100, 100);
-		
-		add(testEmitter);
-		testEmitter.explode();
 		
 		// Possibly create some rocks
 
@@ -71,9 +66,14 @@ class PlayState extends FlxPhysState
 		
 		if (FlxG.mouse.justPressed())
 		{
-			var newExplosion:Explosion = new Explosion(FlxG.mouse.x, FlxG.mouse.y);
+			var newExplosion:Explosion = new Explosion(FlxG.mouse.x, FlxG.mouse.y, 500, 150);
 			add(newExplosion);
 			newExplosion.explode();
+		}
+		
+		if (FlxG.keys.justPressed("R"))
+		{
+			FlxG.resetState();
 		}
 	}
 	

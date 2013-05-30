@@ -1,5 +1,6 @@
 package ;
 import nape.dynamics.InteractionFilter;
+import org.flixel.FlxG;
 
 /**
  * ...
@@ -9,21 +10,21 @@ class Explosion extends PhysEmitter
 {
 	var exploded:Bool = false;
 
-	public function new(X, Y, MaxSize:Int=50) 
+	public function new(X, Y, Speed:Float = 500, Radius:Float = 300, MaxSize:Int=50) 
 	{
 		super(X, Y, MaxSize);
 		
-		minSpeed = 500;
-		maxSpeed = 500;
+		minSpeed = Speed;
+		maxSpeed = Speed;
 		
-		lifespan = 1;
+		lifespan = Radius / Speed;
 		
-		for (i in 0...50)
+		for (i in 0...MaxSize)
 		{
 			var newParticle:PhysParticle = new PhysParticle();
 
 			
-			newParticle.makeGraphic(1, 1);
+			newParticle.makeGraphic(1, 1, 0xffffffff);
 			//newParticle.createCircularBody(1);
 			newParticle.exists =  false;
 			newParticle.setBodyMaterial(1, 0, 0, 100, 0);
