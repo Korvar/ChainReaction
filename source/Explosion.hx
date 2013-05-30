@@ -27,7 +27,7 @@ class Explosion extends PhysEmitter
 			newParticle.makeGraphic(1, 1, 0xffffffff);
 			//newParticle.createCircularBody(1);
 			newParticle.exists =  false;
-			newParticle.setBodyMaterial(1, 0, 0, 100, 0);
+			newParticle.body.setShapeMaterials(Registry.shrapnelMaterial);
 			newParticle.body.setShapeFilters(new InteractionFilter(Registry.FILTER_SHRAPNEL, Registry.FILTER_BOMB + Registry.FILTER_ROCK));
 			newParticle.body.cbTypes.add(Registry.CB_Shrapnel);
 			add(newParticle);
@@ -47,8 +47,9 @@ class Explosion extends PhysEmitter
 		
 		if (exploded && countLiving() == 0)
 		{
-			this.callAll("kill");
+			this.callAll("destroy");
 			kill();
+			destroy();
 		}
 	}
 	

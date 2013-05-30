@@ -48,13 +48,20 @@ class PlayState extends FlxPhysState
 		Registry.CB_Shrapnel = new CbType();
 		Registry.CB_Exploding = new CbType();
 		
+		// Materials
+		Registry.wallmaterial = new Material(1, 0, 0, 1, 0);
+		Registry.bombMaterial = new Material(1, 0, 0, 1, 0);
+		Registry.shrapnelMaterial = new Material(1, 0, 0, 100, 0);
+		Registry.bombMaterial = new Material(1, 0, 0, 1, 0);
+		
+		
 		var shrapnelListener:InteractionListener = new InteractionListener(CbEvent.BEGIN, InteractionType.COLLISION, 
 			Registry.CB_Bomb, Registry.CB_Shrapnel, shrapnelHitsBomb);
 		FlxPhysState.space.listeners.add(shrapnelListener);
 		
 		
 		// FlxPhysState shortcut to create bondaries around game area. 
-		createWalls(Registry.worldMinX, Registry.worldMinY, Registry.worldMaxX, Registry.worldMaxY, 10, new Material(1, 0, 0, 1, 0));
+		createWalls(Registry.worldMinX, Registry.worldMinY, Registry.worldMaxX, Registry.worldMaxY, 10, Registry.wallmaterial);
 		
 		FlxPhysState.space.gravity.setxy(0,0);  // No Gravity		
 		

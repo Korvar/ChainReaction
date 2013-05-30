@@ -1,5 +1,6 @@
 package ;
 import nape.callbacks.CbType;
+import nape.phys.Material;
 import nme.display.Sprite;
 import org.flixel.FlxButton;
 import org.flixel.FlxCamera;
@@ -34,6 +35,12 @@ class Registry
 	public static var CB_Shrapnel:CbType;
 	public static var CB_Bomb:CbType;
 	public static var CB_Exploding:CbType;
+	
+	public static var shrapnelMaterial:Material;
+	public static var bombMaterial:Material;
+	public static var rockMaterial:Material;
+	public static var wallmaterial:Material;
+	
 	
 	public function new() 
 	{

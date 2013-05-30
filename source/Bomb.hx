@@ -25,7 +25,7 @@ class Bomb extends FlxPhysSprite
 		fuseTime = FuseTime;
 		
 		createCircularBody(16);
-		body.setShapeMaterials(new Material(1, 0, 0, 1, 0));
+		body.setShapeMaterials(Registry.bombMaterial);
 		
 		body.velocity = Vec2.weak(BombSpeed, 0).rotate(FlxG.random() * 360); // i.e. bombSpeed in a random direction
 		loadGraphic("assets/bomb.png");
@@ -55,6 +55,8 @@ class Bomb extends FlxPhysSprite
 	
 	public function explode(timer:FlxTimer)
 	{
-		trace("Ker pow!");
+		var newExplosion:Explosion = new Explosion(x, y,500, 150);
+		kill();
+		newExplosion.explode();		
 	}
 }
