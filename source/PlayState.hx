@@ -68,6 +68,13 @@ class PlayState extends FlxPhysState
 	override public function update()
 	{
 		super.update();
+		
+		if (FlxG.mouse.justPressed())
+		{
+			var newExplosion:Explosion = new Explosion(FlxG.mouse.x, FlxG.mouse.y);
+			add(newExplosion);
+			newExplosion.explode();
+		}
 	}
 	
 }

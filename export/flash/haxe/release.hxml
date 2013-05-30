@@ -7,6 +7,7 @@
 -cp C:\Motion-Twin\haxe\lib\flixel/1,09/
 -D NAPE_RELEASE_BUILD
 -D nme_install_tool
+-D fdb
 -D web
 -swf-version 10.1
 -swf9 export/flash/bin/ChainReaction.swf

@@ -25,8 +25,10 @@ class Registry
 	public static var worldMaxY:Float = 800;
 
 
-	// CBtypes, should probably rename
-
+	// Interaction Filters
+	public static var FILTER_SHRAPNEL:Int = 1;
+	public static var FILTER_BOMB:Int = 2;
+	public static var FILTER_ROCK:Int = 4;
 
 	public function new() 
 	{

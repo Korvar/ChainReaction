@@ -13,6 +13,8 @@ class PhysEmitter extends FlxGroup
 	var x:Float;
 	var y:Float;
 	
+
+	
 	public var rate:Float = 1.0; // How fast the particles should be emitted
 	var timeSinceLastEmit:Float = 0;
 	
@@ -25,6 +27,7 @@ class PhysEmitter extends FlxGroup
 	
 	public var on:Bool = false;
 	var exploding:Bool = true;
+	var regular:Bool; // Whether the explosion is regular i.e. non-randomly distributed	
 
 	public function new(X, Y, MaxSize:Int = 0)
 	{
@@ -64,7 +67,7 @@ class PhysEmitter extends FlxGroup
 		maxAngle = Angle + (Spread / 2);
 	}
 	
-	public function start(Explode:Bool = true, Lifespan:Float = 1, Rate:Float = 1):Void
+	public function start(Explode:Bool = true, Lifespan:Float = 1, Rate:Float = 1, Regular:Bool = false):Void
 	{
 
 		lifespan = Lifespan;		
@@ -72,11 +75,32 @@ class PhysEmitter extends FlxGroup
 		
 		if (Explode)
 		{
+			exploding = true;
+			var angleStep:Float = 0;
+			var originalMaxAngle:Float = 0;
+			var originalMinAngle:Float = 0;
+			var angleIncrement:Float = 0;
+			if (Regular) 
+			{
+				angleStep = (maxAngle - minAngle) / members.length;
+				originalMaxAngle = maxAngle;
+				originalMinAngle = minAngle;			
+			}
 			for (i in this.members)
 			{
+				if (Regular)
+				{
+					minAngle = maxAngle = originalMinAngle + angleIncrement;
+					angleIncrement += angleStep;
+				}
 				emitParticle();
 			}
 			on = false;
+			if (Regular)
+			{
+				minAngle = originalMinAngle;
+				maxAngle = originalMaxAngle;
+			}
 		}
 		else 
 		{
