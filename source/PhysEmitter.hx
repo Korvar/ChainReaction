@@ -39,8 +39,8 @@ class PhysEmitter extends FlxGroup
 	public function emitParticle():Void
 	{
 		if (!on) return;
-		var particle:PhysParticle = cast(recycle(PhysParticle));
-		var emitVelocity:Vec2 = new Vec2(1, 0);
+		var particle:PhysParticle = cast(getFirstAvailable(), PhysParticle);
+		var emitVelocity:Vec2 = Vec2.get(1, 0);
 		
 		if (maxSpeed < minSpeed) maxSpeed = minSpeed;
 		
@@ -52,11 +52,11 @@ class PhysEmitter extends FlxGroup
 
 		emitVelocity.muleq(emitSpeed);
 		emitVelocity.rotate(emitAngle);
-		
-		particle.reset(x, y);
+
 		particle.body.velocity = emitVelocity;
 		particle.lifespan = lifespan;
-		// particle.visible = true;
+		particle.visible = true;
+		particle.reset(x, y);  
 		
 		emitVelocity.dispose();
 	}

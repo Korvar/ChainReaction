@@ -12,12 +12,13 @@ class PhysParticle extends FlxPhysSprite
 {
 	public var lifespan:Float;
 
-	public function new(X:Float=0, Y:Float=0, SimpleGraphic:Dynamic=null, CreateBody:Bool=true) 
+	public function new(X:Float=0, Y:Float=0, Lifespan:Float = 1) 
 	{
-		super(X, Y, SimpleGraphic, false);
-		makeGraphic(1, 1);
+		super(X, Y, null, false);
+		makeGraphic(1, 1,0xffffffff);
 		createCircularBody(1);
 		setBodyMaterial(1, 0, 0, 1, 0);
+		lifespan = Lifespan;
 		
 		
 	}

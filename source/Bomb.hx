@@ -55,8 +55,10 @@ class Bomb extends FlxPhysSprite
 	
 	public function explode(timer:FlxTimer)
 	{
-		var newExplosion:Explosion = new Explosion(x, y,500, 150);
+		var newExplosion:Explosion = new Explosion(x, y, 500, 150);
 		kill();
-		newExplosion.explode();		
+		FlxG.state.add(newExplosion);
+		newExplosion.explode();	
+		
 	}
 }

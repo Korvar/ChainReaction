@@ -30,6 +30,7 @@ class Explosion extends PhysEmitter
 			newParticle.body.setShapeMaterials(Registry.shrapnelMaterial);
 			newParticle.body.setShapeFilters(new InteractionFilter(Registry.FILTER_SHRAPNEL, Registry.FILTER_BOMB + Registry.FILTER_ROCK));
 			newParticle.body.cbTypes.add(Registry.CB_Shrapnel);
+			newParticle.lifespan = lifespan;
 			add(newParticle);
 		}
 		
