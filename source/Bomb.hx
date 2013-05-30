@@ -1,10 +1,12 @@
 package ;
+import nape.callbacks.CbTypeList;
 import nape.dynamics.InteractionFilter;
 import nape.geom.Vec2;
 import nape.phys.Material;
 import nape.shape.Circle;
 import nape.shape.Polygon;
 import org.flixel.FlxG;
+import org.flixel.FlxTimer;
 import org.flixel.nape.FlxPhysSprite;
 
 /**
@@ -13,10 +15,15 @@ import org.flixel.nape.FlxPhysSprite;
  */
 class Bomb extends FlxPhysSprite
 {
-	public function new(X:Float=0, Y:Float=0, BombSpeed:Float) 
+	var exploding:Bool = false;
+	var fuseTime:Float = 2; // detonation time in seconds
+	
+	public function new(X:Float=0, Y:Float=0, BombSpeed:Float, FuseTime:Float = 2) 
 	{
 		super(X, Y, null, false);
 
+		fuseTime = FuseTime;
+		
 		createCircularBody(16);
 		body.setShapeMaterials(new Material(1, 0, 0, 1, 0));
 		
@@ -25,7 +32,29 @@ class Bomb extends FlxPhysSprite
 		body.allowRotation = false; // As it's a circular sprite, with a highlight, don't rotate.
 		body.setShapeFilters(new InteractionFilter(Registry.FILTER_BOMB));
 		
+		body.cbTypes.add(Registry.CB_Bomb);
 		
 	}
 	
+	override public function update():Void
+	{
+		super.update();
+		if (body.cbTypes.has(Registry.CB_Exploding) && !exploding)
+		{
+			// I.E. have we just been hit by shrapnel.
+			// Start ze countdown!
+			
+			// Start the flashing animation that I haven't created yet.
+			
+			// Create a timer.
+			var bombTimer:FlxTimer = new FlxTimer();
+			bombTimer.start(fuseTime, 1, explode);
+			exploding = true;
+		}
+	}
+	
+	public function explode(timer:FlxTimer)
+	{
+		trace("Ker pow!");
+	}
 }

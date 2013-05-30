@@ -29,8 +29,8 @@ class Explosion extends PhysEmitter
 			newParticle.exists =  false;
 			newParticle.setBodyMaterial(1, 0, 0, 100, 0);
 			newParticle.body.setShapeFilters(new InteractionFilter(Registry.FILTER_SHRAPNEL, Registry.FILTER_BOMB + Registry.FILTER_ROCK));
+			newParticle.body.cbTypes.add(Registry.CB_Shrapnel);
 			add(newParticle);
-			trace(~Registry.FILTER_SHRAPNEL);
 		}
 		
 	}

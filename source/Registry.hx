@@ -30,6 +30,11 @@ class Registry
 	public static var FILTER_BOMB:Int = 2;
 	public static var FILTER_ROCK:Int = 4;
 
+	// CbTypes
+	public static var CB_Shrapnel:CbType;
+	public static var CB_Bomb:CbType;
+	public static var CB_Exploding:CbType;
+	
 	public function new() 
 	{
 		

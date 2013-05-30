@@ -1,5 +1,11 @@
 package ;
 
+import nape.callbacks.CbEvent;
+import nape.callbacks.CbType;
+import nape.callbacks.InteractionCallback;
+import nape.callbacks.InteractionListener;
+import nape.callbacks.InteractionType;
+import nape.phys.Body;
 import nape.phys.Material;
 import org.flixel.FlxEmitter;
 import org.flixel.FlxG;
@@ -36,6 +42,15 @@ class PlayState extends FlxPhysState
 		bombs = new FlxGroup();
 		rocks = new FlxGroup();
 		hud = new FlxGroup();
+		
+		// CB Types
+		Registry.CB_Bomb = new CbType();
+		Registry.CB_Shrapnel = new CbType();
+		Registry.CB_Exploding = new CbType();
+		
+		var shrapnelListener:InteractionListener = new InteractionListener(CbEvent.BEGIN, InteractionType.COLLISION, 
+			Registry.CB_Bomb, Registry.CB_Shrapnel, shrapnelHitsBomb);
+		FlxPhysState.space.listeners.add(shrapnelListener);
 		
 		
 		// FlxPhysState shortcut to create bondaries around game area. 
@@ -75,6 +90,13 @@ class PlayState extends FlxPhysState
 		{
 			FlxG.resetState();
 		}
+	}
+	
+	public function shrapnelHitsBomb(collision:InteractionCallback):Void
+	{
+		var bomb:Body = cast(collision.int1);
+		var shrapnel:Body = cast(collision.int2);
+		bomb.cbTypes.add(Registry.CB_Exploding);
 	}
 	
 }
